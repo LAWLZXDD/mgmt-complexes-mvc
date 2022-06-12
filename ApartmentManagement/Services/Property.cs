@@ -42,17 +42,26 @@ namespace ApartmentManagement.Services
 
         public void AddComplex(Complex complex)
         {
-            throw new System.NotImplementedException();
+            Complexes.Add(complex);
         }
 
         public void DeleteComplex(int? id)
         {
-            throw new System.NotImplementedException();
+            var comp = Complexes.Find(x => x.Id == id);
+            if (comp != null)
+                Complexes.Remove(comp);
         }
 
         public Complex GetComplex(int? id)
         {
-            throw new System.NotImplementedException();
+            if(id == null)
+            {
+                return null;
+            }
+            else
+            {
+                return Complexes.Find(x => x.Id == id);
+            }
         }
 
         public List<Complex> ReadAll()
@@ -62,7 +71,17 @@ namespace ApartmentManagement.Services
 
         public void UpdateComplex(Complex complex)
         {
-            throw new System.NotImplementedException();
+            var complexInfo = Complexes.Find(x => x.Id == complex.Id);
+            if(complexInfo != null)
+            {
+                complexInfo.Id = complex.Id;
+                complexInfo.Name = complex.Name;
+                complexInfo.ImageName = complex.ImageName;
+                complexInfo.Location = complex.Location;
+                complexInfo.PhoneNumber = complex.PhoneNumber;
+                complexInfo.Landlord = complex.Landlord;
+
+            }
         }
     }
 }
