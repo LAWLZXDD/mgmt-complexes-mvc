@@ -1,0 +1,42 @@
+﻿@model ApartmentManagement.ViewModels.HomeIndexModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Manage Units for Complex</h1>
+    <p>Insert CRUD Operations here .</p>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @*displays heading for column id*@
+                @Html.DisplayNameFor(model => model.Complexes.Last().Id)
+            </th>
+            <th>
+                @*displays heading for column name / grabs property name*@
+                @Html.DisplayNameFor(temp => temp.Complexes.Last().Name)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.Complexes)
+        {
+            <tr>
+                @*DisplayFor grabs the actual value*@
+                <td>@Html.DisplayFor(modelitem => item.Id)</td>
+                <td>@Html.DisplayFor(modelitem => item.Name)</td>
+                <td>
+                    <a asp-action="Edit" asp-controller="Employee" asp-route-id="@item.Id">Edit</a>
+                </td>
+                <td>
+                    <a asp-action="Details" asp-controller="Employee" asp-route-id="@item.Id">Details</a>
+                </td>
+                <td>
+                    <a asp-action="Delete" asp-controller="Employee" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
