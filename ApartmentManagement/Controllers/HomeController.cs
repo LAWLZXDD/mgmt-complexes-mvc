@@ -14,10 +14,12 @@ namespace ApartmentManagement.Controllers
     public class HomeController : Controller
     {
         private IProperty _property;
+        private IUnitData _unitdata;
 
-        public HomeController(IProperty property)
+        public HomeController(IProperty property, IUnitData unitdata)
         {
             _property = property;
+            _unitdata = unitdata;
         }
 
         public IActionResult Index()
@@ -39,7 +41,20 @@ namespace ApartmentManagement.Controllers
                 _property.AddComplex(obj);
                 ViewBag.Message = "Property successfully added";
             }
-            return View();
+            return RedirectToAction("Index");
+        }
+        //TODO
+        //Details Will be Redirected to the Unit Controller
+        //Will eventually need to query Database to return only units with the matching complex Id number
+        [HttpGet]
+        public IActionResult Details(int id)
+        {
+            var comp = _property.GetComplex(id); // get the id of the complex i am working with
+            var compUnits = _unitdata.ReadAll(); // get a list of all my current units
+            UnitIndexModel model = new UnitIndexModel(); //instantiate new model view for UnitIndex
+            model.Units = compUnits.FindAll(items => comp.Id == items.ComplexId); // put the data needed into the model
+            ViewBag.ComplexName = comp.Name;
+            return View(model); // send it to the view with the model object being passed into the view
         }
         [HttpGet]
         public IActionResult Edit(int id)

@@ -26,6 +26,7 @@ namespace ApartmentManagement
         {
             services.AddControllersWithViews();
             services.AddSingleton<IProperty, Property>();
+            services.AddSingleton<IUnitData, AptUnit>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

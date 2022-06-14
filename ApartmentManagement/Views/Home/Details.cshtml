@@ -1,0 +1,68 @@
+﻿@model ApartmentManagement.ViewModels.UnitIndexModel
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_LayoutUnit.cshtml";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Manage Units for @ViewBag.ComplexName</h1>
+</div>
+<a asp-action="Create" asp-controller="Unit">Add New Unit</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @*displays heading for column id*@
+                @Html.DisplayNameFor(model => model.Units.Last().Id)
+            </th>
+            <th>
+                @*displays heading for column name / grabs property name*@
+                @Html.DisplayNameFor(temp => temp.Units.Last().ComplexId)
+            </th>
+            <th>
+                @*displays heading for column name / grabs property name*@
+                @Html.DisplayNameFor(temp => temp.Units.Last().UnitNumber)
+            </th>
+            <th>
+                @*displays heading for column name / grabs property name*@
+                @Html.DisplayNameFor(temp => temp.Units.Last().UnitLetter)
+            </th>
+            <th>
+                @*displays heading for column name / grabs property name*@
+                @Html.DisplayNameFor(temp => temp.Units.Last().Beds)
+            </th>
+            <th>
+                @*displays heading for column name / grabs property name*@
+                @Html.DisplayNameFor(temp => temp.Units.Last().Baths)
+            </th>
+            <th>
+                @*displays heading for column name / grabs property name*@
+                @Html.DisplayNameFor(temp => temp.Units.Last().Rent)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.Units)
+        {
+            <tr>
+                @*DisplayFor grabs the actual value*@
+                <td>@Html.DisplayFor(modelitem => item.Id)</td>
+                <td>@Html.DisplayFor(modelitem => item.ComplexId)</td>
+                <td>@Html.DisplayFor(modelitem => item.UnitNumber)</td>
+                <td>@Html.DisplayFor(modelitem => item.UnitLetter)</td>
+                <td>@Html.DisplayFor(modelitem => item.Beds)</td>
+                <td>@Html.DisplayFor(modelitem => item.Baths)</td>
+                <td>@Html.DisplayFor(modelitem => item.Rent)</td>
+                <td>
+                    <a asp-action="Edit" asp-controller="Unit" asp-route-id="@item.Id">Edit</a>
+                </td>
+                <td>
+                    <a asp-action="Details" asp-controller="Unit" asp-route-id="@item.Id">Details</a>
+                </td>
+                <td>
+                    <a asp-action="Delete" asp-controller="Unit" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
