@@ -47,5 +47,37 @@ namespace ApartmentManagement.Controllers
             }
             return RedirectToAction("Index", "Unit", new {id});
         }
+
+        public IActionResult UnitDetails(int? id)
+        {
+            var unitDetails = _unitdata.GetUnit(id);
+            if(unitDetails == null)
+            {
+                return null;
+            }
+            return View(unitDetails);
+        }
+        [HttpGet]
+        public IActionResult UnitEdit(int id)
+        {
+            Unit obj = _unitdata.GetUnit(id);
+            return View(obj);
+        }
+        [HttpPost]
+        public IActionResult UnitEdit(Unit obj, int id)
+        {
+            obj.Id = id;
+            _unitdata.UpdateUnit(obj);
+
+            return RedirectToAction("UnitDetails", new {id});
+        }
+        public IActionResult UnitDelete(int id)
+        {
+            var compUnit = _unitdata.GetUnit(id);
+            _unitdata.DeleteUnit(id);
+            id = compUnit.ComplexId;
+            
+            return RedirectToAction("Index", new {id});
+        }
     }
 }

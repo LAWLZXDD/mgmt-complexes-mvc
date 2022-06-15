@@ -59,9 +59,14 @@ namespace ApartmentManagement.Services
             Units.Add(unit);
         }
 
-        public void DeleteUnit(int? unit)
+        public void DeleteUnit(int? id)
         {
-            throw new System.NotImplementedException();
+            var unitId = Units.Find(x => x.Id == id);
+
+            if(unitId != null)
+            {
+                Units.Remove(unitId);
+            }
         }
 
         public Unit GetUnit(int? id)
@@ -83,7 +88,17 @@ namespace ApartmentManagement.Services
 
         public void UpdateUnit(Unit unit)
         {
-            throw new System.NotImplementedException();
+            var unitDetails = Units.Find(x => x.Id == unit.Id);
+            if(unitDetails != null)
+            {
+                unitDetails.Id = unit.Id;
+                unitDetails.ComplexId = unit.ComplexId;
+                unitDetails.UnitNumber = unit.UnitNumber;
+                unitDetails.UnitLetter = unit.UnitLetter;
+                unitDetails.Beds = unit.Beds;
+                unitDetails.Baths = unit.Baths;
+                unitDetails.Rent = unit.Rent;
+            }
         }
     }
 }
