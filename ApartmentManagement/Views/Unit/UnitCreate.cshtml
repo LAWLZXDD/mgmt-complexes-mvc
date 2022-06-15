@@ -2,12 +2,12 @@
 @{
     ViewData["Title"] = "UnitCreate";
     Layout = "~/Views/Shared/_LayoutUnit.cshtml";
+    
 }
 
 
 <h1>UnitCreate</h1>
-<h4>Add Unit to </h4>
-<h4>MY CURRENT COMPLEX ID = @ViewBag.Message</h4>
+<h4>Add Unit to @ViewBag.AddToComplex </h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -58,8 +58,8 @@
 
 <div>
     
-    @*<a asp-action="Details" asp-controller="Unit" asp-route-id="@ViewBag.ComplexId">Back to List</a>*@
+    <a asp-action="Index" asp-controller="Unit" asp-route-id="@ViewBag.ComplexId">Back to List</a>
 
-    <a href="javascript:history.go(-1)">Javascript Implemented Go Back</a>
+    @*<a href="javascript:history.go(-1)">Javascript Implemented Go Back</a>*@
 </div>
 

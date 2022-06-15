@@ -32,9 +32,12 @@ namespace ApartmentManagement.Controllers
             return View(model); // return the view with the model object being passed into the view
         }
         [HttpGet]
-        public IActionResult UnitCreate()
+        public IActionResult UnitCreate(int complexId)
         {
-            
+            var unitInfo = _unitdata.ReadAll(); 
+            var compInfo = _property.GetComplex(complexId);
+            ViewBag.AddToComplex = compInfo.Name;
+            ViewBag.ComplexId = complexId;
             return View();
         }
         [HttpPost]

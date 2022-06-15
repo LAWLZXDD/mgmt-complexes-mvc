@@ -2,13 +2,14 @@
 @{
     ViewData["Title"] = "Home Page";
     Layout = "~/Views/Shared/_LayoutUnit.cshtml";
+    var complexName = ViewBag.ComplexName;
 }
 
 <div class="text-center">
-    <h1 class="display-4">Manage Units for @ViewBag.ComplexName</h1>
+    <h1 class="display-4">Manage Units for @complexName</h1>
 </div>
 
-<a asp-action="UnitCreate" asp-route-id=@ViewBag.RemeberedId>Add New Unit</a>
+<a asp-action="UnitCreate" asp-route-complexid="@ViewBag.ComplexId">Add New Unit</a>
 <table class="table">
     <thead>
         <tr>
