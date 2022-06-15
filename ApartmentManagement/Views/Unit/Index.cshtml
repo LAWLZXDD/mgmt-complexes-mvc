@@ -7,7 +7,8 @@
 <div class="text-center">
     <h1 class="display-4">Manage Units for @ViewBag.ComplexName</h1>
 </div>
-<a asp-action="Create" asp-controller="Unit">Add New Unit</a>
+
+<a asp-action="UnitCreate" asp-route-id=@ViewBag.RemeberedId>Add New Unit</a>
 <table class="table">
     <thead>
         <tr>

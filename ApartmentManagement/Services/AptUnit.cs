@@ -56,7 +56,7 @@ namespace ApartmentManagement.Services
         }
         public void AddUnit(Unit unit)
         {
-            throw new System.NotImplementedException();
+            Units.Add(unit);
         }
 
         public void DeleteUnit(int? unit)
@@ -66,7 +66,14 @@ namespace ApartmentManagement.Services
 
         public Unit GetUnit(int? id)
         {
-            throw new System.NotImplementedException();
+            if (id == null)
+            {
+                return null;
+            }
+            else
+            {
+                return Units.Find(x => x.Id == id);
+            }
         }
 
         public List<Unit> ReadAll()

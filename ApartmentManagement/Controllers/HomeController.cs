@@ -45,21 +45,17 @@ namespace ApartmentManagement.Controllers
         }
         //TODO
         //Details Will be Redirected to the Unit Controller
-        //Will eventually need to query Database to return only units with the matching complex Id number
         [HttpGet]
         public IActionResult Details(int id)
         {
-            var comp = _property.GetComplex(id); // get the id of the complex i am working with
-            var compUnits = _unitdata.ReadAll(); // get a list of all my current units
-            UnitIndexModel model = new UnitIndexModel(); //instantiate new model view for UnitIndex
-            model.Units = compUnits.FindAll(items => comp.Id == items.ComplexId); // put the data needed into the model
-            ViewBag.ComplexName = comp.Name;
-            return View(model); // send it to the view with the model object being passed into the view
+            return RedirectToAction("Index", "Unit", new {id});
         }
+
         [HttpGet]
         public IActionResult Edit(int id)
         {
             Complex obj = _property.GetComplex(id);
+            Console.WriteLine(obj);
             return View(obj);
         }
 
@@ -68,7 +64,6 @@ namespace ApartmentManagement.Controllers
         {
             obj.Id = id;
             _property.UpdateComplex(obj);
-
             return RedirectToAction("Index");
         }
         [HttpGet]

@@ -1,0 +1,64 @@
+﻿@model ApartmentManagement.Models.Unit
+@{
+    ViewData["Title"] = "UnitCreate";
+    Layout = "~/Views/Shared/_LayoutUnit.cshtml";
+}
+
+<h1>UnitCreate</h1>
+<h4>Add Unit to @ViewBag.ComplexName</h4>
+<h4>MY CURRENT COMPLEX ID = @ViewBag.RemeberedId</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <div></div>
+        <form asp-action="UnitCreate">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ComplexId" class="control-label"></label>
+                <input asp-for="ComplexId" class="form-control" />
+                <span asp-validation-for="ComplexId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UnitNumber" class="control-label"></label>
+                <input asp-for="UnitNumber" class="form-control" />
+                <span asp-validation-for="UnitNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UnitLetter" class="control-label"></label>
+                <input asp-for="UnitLetter" class="form-control" />
+                <span asp-validation-for="UnitLetter" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Beds" class="control-label"></label>
+                <input asp-for="Beds" class="form-control" />
+                <span asp-validation-for="Beds" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Baths" class="control-label"></label>
+                <input asp-for="Baths" class="form-control" />
+                <span asp-validation-for="Baths" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Rent" class="control-label"></label>
+                <input asp-for="Rent" class="form-control" />
+                <span asp-validation-for="Rent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    
+    @*<a asp-action="Details" asp-controller="Unit" asp-route-id="@ViewBag.ComplexId">Back to List</a>*@
+
+    <a href="javascript:history.go(-1)">Javascript Implemented Go Back</a>
+</div>
+
