@@ -9,7 +9,7 @@ namespace ApartmentManagement.Services
         List<Unit> ReadAll();
         Unit GetUnit(int? id);
         void AddUnit(Unit unit);
-        void DeleteUnit(int? unit);
+        void DeleteUnit(int? id);
         void UpdateUnit(Unit unit);
     }
 }

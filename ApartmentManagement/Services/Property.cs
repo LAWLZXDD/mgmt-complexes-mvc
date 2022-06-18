@@ -17,7 +17,7 @@ namespace ApartmentManagement.Services
                     ImageName ="Complex1.jpg",
                     Location = "Houston",
                     PhoneNumber = "713-345-6789",
-                    Landlord = "Doctor Landlord"
+                    Landlord = "Doctor Landlord",
                 },
                 new Complex()
                 {
