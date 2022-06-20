@@ -54,6 +54,7 @@ namespace ApartmentManagement.Controllers
         public IActionResult UnitDetails(int? id)
         {
             var unitDetails = _unitdata.GetUnit(id);
+            ViewBag.UnitName = unitDetails.UnitNumber + unitDetails.UnitLetter;
             if(unitDetails == null)
             {
                 return null;
@@ -64,6 +65,7 @@ namespace ApartmentManagement.Controllers
         public IActionResult UnitEdit(int id)
         {
             Unit obj = _unitdata.GetUnit(id);
+            ViewBag.UnitName = obj.UnitNumber + obj.UnitLetter;
             return View(obj);
         }
         [HttpPost]

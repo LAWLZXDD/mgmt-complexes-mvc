@@ -11,5 +11,6 @@ namespace ApartmentManagement.Services
         void AddUnit(Unit unit);
         void DeleteUnit(int? id);
         void UpdateUnit(Unit unit);
+        
     }
 }

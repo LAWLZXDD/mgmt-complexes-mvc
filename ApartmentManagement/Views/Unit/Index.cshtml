@@ -41,6 +41,10 @@
                 @*displays heading for column name / grabs property name*@
                 @Html.DisplayNameFor(temp => temp.Units.Last().Rent)
             </th>
+                        <th>
+                @*displays heading for column name / grabs property name*@
+                @Html.DisplayNameFor(temp => temp.Units.Last().IsAvailable)
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -55,6 +59,7 @@
                 <td>@Html.DisplayFor(modelitem => item.Beds)</td>
                 <td>@Html.DisplayFor(modelitem => item.Baths)</td>
                 <td>@Html.DisplayFor(modelitem => item.Rent)</td>
+                <td>@Html.DisplayFor(modelitem => item.IsAvailable)</td>
                 <td>
                     <a asp-action="UnitEdit" asp-controller="Unit" asp-route-id="@item.Id">Edit</a>
                 </td>

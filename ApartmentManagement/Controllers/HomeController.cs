@@ -66,29 +66,18 @@ namespace ApartmentManagement.Controllers
             _property.UpdateComplex(obj);
             return RedirectToAction("Index");
         }
-        [HttpGet]
+
         public IActionResult Delete(int id)
         {
-            Complex obj = _property.GetComplex(id);
-            return View(obj);
-        }
+            _property.DeleteComplex(id);
 
-        [HttpPost]
-        public IActionResult Delete(Complex obj, int id)
-        {
-            if(obj.Id == id)
-            {
-                _property.DeleteComplex(id);
-
-                //find all units that have the selected complex id
-                var unitsToDelete = _unitdata.Units.FindAll(units => units.ComplexId == id);
-                foreach(var unit in unitsToDelete)
-                {
-                    id = unit.Id;
-                    _unitdata.DeleteUnit(id);
-                }
-                
-            }
+            //find all units that have the selected complex id
+            //var unitsToDelete = _unitdata.Units.FindAll(x => x.ComplexId == id);
+            //foreach (var unit in unitsToDelete)
+            //{
+            //    id = unit.Id;
+            //    _unitdata.DeleteUnit(id);
+            //}
             return RedirectToAction("Index");
         }
 

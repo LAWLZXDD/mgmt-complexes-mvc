@@ -5,9 +5,7 @@
     
 }
 
-
-<h1>UnitCreate</h1>
-<h4>Add Unit to @ViewBag.AddToComplex </h4>
+<h1>Add Unit to @ViewBag.AddToComplex </h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -48,6 +46,11 @@
                 <label asp-for="Rent" class="control-label"></label>
                 <input asp-for="Rent" class="form-control" />
                 <span asp-validation-for="Rent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IsAvailable" class="control-label"></label>
+                <input asp-for="IsAvailable" class="form-control" />
+                <span asp-validation-for="IsAvailable" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

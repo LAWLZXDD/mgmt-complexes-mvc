@@ -1,0 +1,37 @@
+﻿@model ApartmentManagement.ViewModels.HomeIndexModel
+@{
+    ViewData["Title"] = "Finances";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Manage Finances</h1>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @*displays heading for column id*@
+                @Html.DisplayNameFor(model => model.Complexes.Last().Id)
+            </th>
+            <th>
+                @*displays heading for column name / grabs property name*@
+                @Html.DisplayNameFor(temp => temp.Complexes.Last().Name)
+            </th>
+            <th>
+                Total Income from property
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.Complexes)
+        {
+            <tr>
+                @*DisplayFor grabs the actual value*@
+                <td>@Html.DisplayFor(modelitem => item.Id)</td>
+                <td>@Html.DisplayFor(modelitem => item.Name)</td>
+                @*Need to grab total calculated rent per complex here*@
+            </tr>
+        }
+
+    </tbody>
+</table>

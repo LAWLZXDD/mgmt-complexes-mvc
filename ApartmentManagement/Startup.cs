@@ -9,6 +9,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ApartmentManagement.Services;
 using ApartmentManagement.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ApartmentManagement
 {
@@ -25,13 +26,22 @@ namespace ApartmentManagement
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddSingleton<IProperty, Property>();
-            services.AddSingleton<IUnitData, AptUnit>();
+            //services.AddSingleton<IProperty, Property>();
+            //services.AddSingleton<IUnitData, AptUnit>();
+            services.AddScoped<IProperty, DBProperty>();
+            services.AddScoped<IUnitData, DBProperty>();
+            services.AddDbContext<ComplexContext>(options => options.UseSqlServer(@"Server=DESKTOP-PHIL35\SQLEXPRESS;Database=MyPropertyManagement;Trusted_Connection=true;MultipleActiveResultSets=True"));
+            //services.AddDbContext<UnitContext>(options => options.UseSqlServer(@"Server=DESKTOP-PHIL35\SQLEXPRESS;Database=MyPropertyManagement;Trusted_Connection=true;MultipleActiveResultSets=True"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(ComplexContext complextContext, IApplicationBuilder app, IWebHostEnvironment env)
         {
+            //just in case
+            complextContext.Database.EnsureDeleted();
+
+            complextContext.Database.EnsureCreated();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

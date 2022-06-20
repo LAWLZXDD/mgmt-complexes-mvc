@@ -19,7 +19,8 @@ namespace ApartmentManagement.Services
                     UnitLetter = "A",
                     Beds = 3,
                     Baths = 2,
-                    Rent = 1500.00M
+                    Rent = 1500.00M,
+                    IsAvailable = true
                 },
                 new Unit()
                 {
@@ -29,7 +30,8 @@ namespace ApartmentManagement.Services
                     UnitLetter = "B",
                     Beds = 4,
                     Baths = 3,
-                    Rent = 1900.00M
+                    Rent = 1900.00M,
+                    IsAvailable = true
                 },
                 new Unit()
                 {
@@ -39,7 +41,8 @@ namespace ApartmentManagement.Services
                     UnitLetter = "A",
                     Beds = 1,
                     Baths = 1,
-                    Rent = 1200.00M
+                    Rent = 1200.00M,
+                    IsAvailable = true
                 },
                 new Unit()
                 {
@@ -49,7 +52,8 @@ namespace ApartmentManagement.Services
                     UnitLetter = "A",
                     Beds = 1,
                     Baths = 1,
-                    Rent = 3000.00M
+                    Rent = 3000.00M,
+                    IsAvailable = true
                 }
 
             };
@@ -98,6 +102,7 @@ namespace ApartmentManagement.Services
                 unitDetails.Beds = unit.Beds;
                 unitDetails.Baths = unit.Baths;
                 unitDetails.Rent = unit.Rent;
+                unitDetails.IsAvailable = unit.IsAvailable;
             }
         }
     }

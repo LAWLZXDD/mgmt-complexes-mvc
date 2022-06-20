@@ -6,7 +6,8 @@ namespace ApartmentManagement.Models
 {
     public class Complex
     {
-        
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
         public string Name { get; set; }
         public string ImageName { get; set; }

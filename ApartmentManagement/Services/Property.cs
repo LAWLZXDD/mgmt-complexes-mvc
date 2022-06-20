@@ -83,5 +83,12 @@ namespace ApartmentManagement.Services
 
             }
         }
+
+        public decimal TotalIncome(decimal rentPrice)
+        {
+            decimal sum = 0;
+            sum += rentPrice;
+            return sum;
+        }
     }
 }

@@ -5,9 +5,9 @@
     Layout = "~/Views/Shared/_LayoutUnit.cshtml";
 }
 
-<h1>UnitEdit</h1>
 
-<h4>Unit</h4>
+<h1>Unit @ViewBag.UnitName</h1>
+<h4>Edit Information: </h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -47,6 +47,11 @@
                 <label asp-for="Rent" class="control-label"></label>
                 <input asp-for="Rent" class="form-control" />
                 <span asp-validation-for="Rent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IsAvailable" class="control-label"></label>
+                <input asp-for="IsAvailable" class="form-control" />
+                <span asp-validation-for="IsAvailable" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

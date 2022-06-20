@@ -5,10 +5,9 @@
     Layout = "~/Views/Shared/_LayoutUnit.cshtml";
 }
 
-<h1>UnitDetails</h1>
+<h1>Unit @ViewBag.UnitName Details</h1>
 
 <div>
-    <h4>Unit</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -52,6 +51,12 @@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Rent)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IsAvailable)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IsAvailable)
         </dd>
     </dl>
 </div>
