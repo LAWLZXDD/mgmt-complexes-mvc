@@ -11,6 +11,7 @@ namespace ApartmentManagement.Services
         void AddComplex(Complex complex);
         void DeleteComplex(int? id);
         void UpdateComplex(Complex complex);
+        void ModifyIncome();
 
     }
 }

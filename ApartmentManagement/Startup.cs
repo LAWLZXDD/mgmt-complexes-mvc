@@ -38,7 +38,7 @@ namespace ApartmentManagement
         public void Configure(ComplexContext complextContext, IApplicationBuilder app, IWebHostEnvironment env)
         {
             //just in case
-            complextContext.Database.EnsureDeleted();
+            //complextContext.Database.EnsureDeleted();
 
             complextContext.Database.EnsureCreated();
 

@@ -57,7 +57,7 @@ namespace ApartmentManagement.Models
                     Beds = 3,
                     Baths = 2,
                     Rent = 1500.00M,
-                    IsAvailable = true
+                    IsAvailable = false
                 },
                 new Unit()
                 {
@@ -68,7 +68,7 @@ namespace ApartmentManagement.Models
                     Beds = 4,
                     Baths = 3,
                     Rent = 1900.00M,
-                    IsAvailable = true
+                    IsAvailable = false
                 },
                 new Unit()
                 {

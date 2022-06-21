@@ -1,5 +1,6 @@
 ﻿using ApartmentManagement.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ApartmentManagement.Services
 {
@@ -8,10 +9,7 @@ namespace ApartmentManagement.Services
         public List<Complex> Complexes { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
         public List<Unit> Units { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
-
-
         private ComplexContext complexContext;
-        
 
         public DBProperty(ComplexContext _complexContext)
         {
@@ -39,6 +37,70 @@ namespace ApartmentManagement.Services
           return complexContext.Complexes.Find(id);
         }
 
+        public void ModifyIncome()
+        {
+
+            //var unitsRent = from unit in complexContext.Units
+            //                where unit.IsAvailable == false
+            //                select unit.Rent;
+
+
+            //complexContext.SaveChanges();
+
+
+            //foreach(var unit in complexContext.Units)
+            //{
+
+
+            //    if(unit != null)
+            //    {
+            //        var complex = complexContext.Complexes.Find(unit.ComplexId);
+            //        if (!unit.IsAvailable)
+            //        {
+            //            complex.TotalIncome += unit.Rent;
+            //        }
+            //    }
+
+            //}
+
+            var income = 0.0M;
+
+            foreach(var comp in complexContext.Complexes)
+            {
+                income = 0.0M;
+                foreach(var unit in complexContext.Units)
+                {
+                    if( unit.ComplexId == comp.Id && unit.IsAvailable == false)
+                    {
+                        income = income + unit.Rent;
+                        comp.TotalIncome = income;
+                    }
+                }
+            }
+            complexContext.SaveChanges();
+
+
+        //    var income = 0.0M;
+
+        //    foreach (var comp in complexContext.Complexes)
+        //    {
+        //        income = 0.0M;
+        //        if (comp.Units != null) // if unit.ComplexId == comp.Id
+        //        {
+        //            foreach (var units in comp.Units)
+        //            {
+        //                if (!units.IsAvailable)
+        //                {
+        //                    //if unit is rented out or not available then create a running sum
+        //                    income = income + units.Rent;
+        //                    comp.TotalIncome = income;
+        //                    complexContext.SaveChanges();
+        //                }
+        //            }
+        //        }
+        //    }
+        }
+
         public List<Complex> ReadAll()
         {
             return new List<Complex>(complexContext.Complexes);
@@ -57,7 +119,8 @@ namespace ApartmentManagement.Services
             }
             complexContext.SaveChanges();
         }
-
+        
+        #region Units Interface Implementation
         List<Unit> IUnitData.ReadAll()
         {
             return new List<Unit>(complexContext.Units);
@@ -101,5 +164,6 @@ namespace ApartmentManagement.Services
             }
             complexContext.SaveChanges();
         }
+        #endregion
     }
 }

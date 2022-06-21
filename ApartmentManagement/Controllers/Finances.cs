@@ -23,27 +23,11 @@ namespace ApartmentManagement.Controllers
         }
         public IActionResult Index(Complex obj)
         {
+            //calculate total income
+            //add method in back in that has a LINQ for Income totals -> 
+            _property.ModifyIncome();
             HomeIndexModel model = new HomeIndexModel();
-            model.Complexes = _property.ReadAll(); // this is a list ready to take the data from the interface that executes property.ReadAll()
-
-
-            var foundUnits = new object();
-
-            for(int i = 0; i < model.Complexes.Count; i++)
-            {
-                foundUnits = _unitData.Units.FindAll(x => x.ComplexId == model.Complexes[i].Id && x.IsAvailable == false);
-
-            }
-
-            //decimal total = 0;
-
-            //find units that are not available within a complex
-            //calculate the not available units' rent price
-            //update TotalIncome to be the total running sum per complex
-            //one more calculation for adding all total sums per property 
-
-
-
+            model.Complexes = _property.ReadAll();
             return View(model);
         }
     }

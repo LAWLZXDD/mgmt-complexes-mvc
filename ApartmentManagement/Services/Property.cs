@@ -84,11 +84,9 @@ namespace ApartmentManagement.Services
             }
         }
 
-        public decimal TotalIncome(decimal rentPrice)
+        public void ModifyIncome()
         {
-            decimal sum = 0;
-            sum += rentPrice;
-            return sum;
+            
         }
     }
 }
